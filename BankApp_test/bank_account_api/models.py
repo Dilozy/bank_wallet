@@ -6,6 +6,7 @@ class BankWallet(models.Model):
     """
     ORM-Модель банковского счета
     """
+    
     id = models.UUIDField(primary_key=True, default=uuid4)
     balance = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Текущий баланс")
 
@@ -18,6 +19,7 @@ class Transaction(models.Model):
     """
     ORM-Модель для фиксации успешно проведенных транзакций
     """
+    
     operation_choices = [
         ("DEPOSIT", "Deposit"),
         ("WITHDRAW", "Withdraw"),

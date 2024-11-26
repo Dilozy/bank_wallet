@@ -11,6 +11,7 @@ class ShowWalletInfoAPI(RetrieveAPIView):
     """
     API View для отображения информации о балансе на счету
     """
+
     serializer_class = WalletInfoSerializer
     lookup_url_kwarg = "wallet_uuid"
     lookup_field = "id"
@@ -26,10 +27,10 @@ class ProceedWalletOperationAPI(GenericAPIView):
     """
     API View отвечающая за увеличение и уменьшениe баланса на счету
     """
+    
     serializer_class = WalletOperationSerializer
     lookup_url_kwarg = "wallet_uuid"
     lookup_field = "id"
-
 
     def post(self, request, *args, **kwargs) -> Response:
         """

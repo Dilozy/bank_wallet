@@ -9,6 +9,7 @@ class WalletOperationSerializer(serializers.Serializer):
     """
     Сериалайзер, отвечающий за обработку операций со счетом
     """
+    
     operationType = serializers.ChoiceField(choices=[
         ("DEPOSIT", "Deposit"),
         ("WITHDRAW", "Withdraw"),
@@ -22,7 +23,6 @@ class WalletOperationSerializer(serializers.Serializer):
             raise serializers.ValidationError({"details": "The amount cannot be a negative number."})
         return value
 
-
     def validate(self, data: Dict[str, Union[str, Decimal]]) -> Dict[str, Union[str, Decimal]]:
         if len(data) != 2 or ("operationType" not in data or "amount" not in data):
             raise serializers.ValidationError({
@@ -35,6 +35,7 @@ class WalletInfoSerializer(serializers.ModelSerializer):
     """
     Сериалайзер данных баланса на счете
     """
+    
     class Meta:
         model = BankWallet
         fields = [
